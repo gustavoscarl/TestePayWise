@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TestesPaywise.Enums;
 
 namespace TestesPaywise.Models
 {
@@ -10,7 +6,7 @@ namespace TestesPaywise.Models
     {
         public int Id { get; private set; }
         public double Valor { get; set; }
-        public string? Tipo { get; set; }
+        public TipoTransacao Tipo { get; set; }
         public DateTime Data { get; set; }
     }
 }

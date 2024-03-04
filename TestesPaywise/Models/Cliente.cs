@@ -4,14 +4,17 @@
     {
         public int Id { get; set; }
         public string? Nome { get; set; }
-        public List<Cartao>? listaCartoes { get; set; }
+        public List<Cartao>? ListaCartoes { get; set; }
+
         public Conta? Conta { get; set; }
+        public HistoricoTransacoes HistoricoTransacoes { get; set; } // Adicionando o histórico de transações
 
         public Cliente(int id, string nome)
         {
             Nome = nome;
             Id = id;
-            listaCartoes = new List<Cartao>();
+            ListaCartoes = new List<Cartao>();
+            HistoricoTransacoes = new HistoricoTransacoes(); // Inicializando o histórico de transações
         }
     }
 }

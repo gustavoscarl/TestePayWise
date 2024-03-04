@@ -11,7 +11,7 @@ namespace TestesPaywise.Models
         public int Numero { get; set; }
         public Cliente Cliente { get; set; }
 
-        public virtual double EfetuarPagamento(double valor) {
+        public virtual double EfetuarPagamento(double valor, Cliente cliente) {
             return valor;
         }
 
