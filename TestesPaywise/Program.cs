@@ -21,6 +21,7 @@ namespace TestesPaywise
                 Console.WriteLine("Digite 8 para listar cartões de um cliente");
                 Console.WriteLine("Digite 9 para ver saldo da conta");
                 Console.WriteLine("Digite 10 para listar transações");
+                Console.WriteLine("Digite 11 para realizar uma transação");
                 Console.WriteLine("Digite 0 para sair");
                 Console.Write("Digite a opção desejada: ");
                 int opcao = int.Parse(Console.ReadLine());
@@ -38,7 +39,7 @@ namespace TestesPaywise
                         lista.Add(cliente);
                         break;
                     case 2:
-                        Console.WriteLine("== Adicionar Conta ==");   
+                        Console.WriteLine("== Adicionar Conta ==");
                         Console.Write("Digite o ID do cliente: ");
                         int idClienteConta = int.Parse(Console.ReadLine());
                         Console.Write("Digite o número da conta: ");
@@ -139,7 +140,7 @@ namespace TestesPaywise
                         }
                         break;
                     case 9:
-                        Console.WriteLine("==Histórico Transações==");    
+                        Console.WriteLine("==Histórico Transações==");
                         Console.Write("Digite o ID do cliente: ");
                         int idClienteSaldo = int.Parse(Console.ReadLine());
                         Cliente getClienteSaldo = lista.Find(c => c.Id == idClienteSaldo);
@@ -151,6 +152,35 @@ namespace TestesPaywise
                         Console.WriteLine("== Transações ==");
                         Cliente getClienteTransacoes = lista.Find(c => c.Id == idClienteTransacoes);
                         getClienteTransacoes.HistoricoTransacoes.ListarTransacoes();
+                        break;
+                    case 11:
+                        Console.WriteLine("==Realizar Transação==");
+                        bool contador = true;
+                        while (contador)
+                        {
+                            Console.Write("Digite o tipo da transação (1- Pix)");
+                            switch (Console.ReadLine())
+                            {
+                                case "1":
+                                    Console.Write("Digite o valor da transação: ");
+                                    double valorTransacao = double.Parse(Console.ReadLine());
+                                    Console.Write("Digite a chave destino: ");
+                                    string chaveDestino = Console.ReadLine();
+                                    Console.Write("Digite o ID do cliente: ");
+                                    int idClienteTransacao = int.Parse(Console.ReadLine());
+                                    Cliente getClienteTransacao = lista.Find(c => c.Id == idClienteTransacao);
+                                    Pix pix = new Pix();
+                                    pix.Conta = getClienteTransacao.Conta;
+                                    pix.Chave = "123";
+                                    pix.Enviar(valorTransacao, chaveDestino, getClienteTransacao);
+                                    Console.WriteLine($"Valor de R$ {valorTransacao} enviado para ${chaveDestino}");
+                                    contador = false;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    break;
+                            }   
+                        }
                         break;
                     case 0:
                         continuar = false;

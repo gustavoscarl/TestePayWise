@@ -9,12 +9,12 @@
 
         public double Depositar(double valor)
         {
-            return valor;
+            return Saldo += valor;
         }
 
         public double Sacar(double valor)
         {
-            return valor;
+            return Saldo -= valor;
         }
 
         public double GetSaldo() {
